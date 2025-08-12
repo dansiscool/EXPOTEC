@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Volt2U - Login / Cadastro</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(255 204 0 / 0.2);
+    padding: 30px 40px;
+    width: 360px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffcc00;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  input, select {
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255 255 255 / 0.2);
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  input::placeholder {
+    color: #ddd;
+  }
+  input:focus, select:focus {
+    background: rgba(255 255 255 / 0.4);
+    outline: none;
+  }
+  button {
+    padding: 12px;
+    background: #ffcc00;
+    color: #000;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #e6b800;
+  }
+  .msg {
+    margin: 15px 0 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .msg.success {
+    background-color: #e0f7e9;
+    color: #006622;
+  }
+  .msg.error {
+    background-color: #fce4e4;
+    color: #990000;
+  }
+  .toggle-link {
+    color: #ffcc00;
+    text-align: center;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .fade {
+    animation: fadeIn 0.4s ease forwards;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form id="loginForm" class="fade">
+    <h2>Login Volt2U</h2>
+    <label for="loginEmail">Email:</label>
+    <input type="email" id="loginEmail" name="email" placeholder="seu@email.com" required />
+    
+    <label for="loginSenha">Senha:</label>
+    <input type="password" id="loginSenha" name="senha" placeholder="Senha" required minlength="6" />
+
+    <button type="submit">Entrar</button>
+    <div id="msgLogin" class="msg" style="display:none;"></div>
+    <div class="toggle-link" onclick="toggleForms()">Não tem conta? Cadastre-se</div>
+  </form>
+
+  <form id="cadastroForm" style="display:none;">
+    <h2>Cadastro Volt2U</h2>
+    <label for="nome">Nome Completo:</label>
+    <input type="text" id="nome" name="nome_completo" placeholder="Seu nome completo" required minlength="3" />
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" />
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Formato: (00) 00000-0000" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" placeholder="Senha" required minlength="6" />
+
+    <button type="submit">Cadastrar</button>
+    <div id="msgCadastro" class="msg" style="display:none;"></div>
+    <div class="toggle-link" onclick="toggleForms()">Já tem conta? Faça login</div>
+  </form>
+</div>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const cadastroForm = document.getElementById('cadastroForm');
+  const msgLogin = document.getElementById('msgLogin');
+  const msgCadastro = document.getElementById('msgCadastro');
+
+  function toggleForms() {
+    if (loginForm.style.display === 'none') {
+      cadastroForm.style.display = 'none';
+      loginForm.style.display = 'flex';
+      loginForm.classList.add('fade');
+      cadastroForm.classList.remove('fade');
+      clearMessages();
+    } else {
+      loginForm.style.display = 'none';
+      cadastroForm.style.display = 'flex';
+      cadastroForm.classList.add('fade');
+      loginForm.classList.remove('fade');
+      clearMessages();
+    }
+  }
+
+  function clearMessages() {
+    msgLogin.style.display = 'none';
+    msgLogin.textContent = '';
+    msgCadastro.style.display = 'none';
+    msgCadastro.textContent = '';
+  }
+
+  // Enviar Login
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    clearMessages();
+
+    const formData = new FormData(loginForm);
+
+    fetch('login.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+      if (text.toLowerCase().includes('sucesso')) {
+        msgLogin.className = 'msg success';
+        msgLogin.textContent = 'Login realizado com sucesso! Redirecionando...';
+        msgLogin.style.display = 'block';
+        setTimeout(() => window.location.href = 'main.html', 1500);
+      } else {
+        msgLogin.className = 'msg error';
+        msgLogin.textContent = text;
+        msgLogin.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      msgLogin.className = 'msg error';
+      msgLogin.textContent = 'Erro de conexão. Tente novamente.';
+      msgLogin.style.display = 'block';
+    });
+  });
+
+  // Enviar Cadastro com login automático
+  cadastroForm.addEventListener('submit', e => {
+    e.preventDefault();
+    clearMessages();
+
+    const formData = new FormData(cadastroForm);
+
+    fetch('cadastro.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+      if (text.toLowerCase().includes('sucesso')) {
+        msgCadastro.className = 'msg success';
+        msgCadastro.textContent = 'Cadastro realizado com sucesso!';
+        msgCadastro.style.display = 'block';
+
+        // Login automático após cadastro
+        const email = cadastroForm.email.value;
+        const senha = cadastroForm.senha.value;
+        loginAutomatico(email, senha);
+      } else {
+        msgCadastro.className = 'msg error';
+        msgCadastro.textContent = text;
+        msgCadastro.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      msgCadastro.className = 'msg error';
+      msgCadastro.textContent = 'Erro de conexão. Tente novamente.';
+      msgCadastro.style.display = 'block';
+    });
+  });
+
+  function loginAutomatico(email, senha) {
+    const data = new FormData();
+    data.append('email', email);
+    data.append('senha', senha);
+
+    fetch('login.php', {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.text())
+    .then(text => {
+      if (text.toLowerCase().includes('sucesso')) {
+        setTimeout(() => {
+          window.location.href = 'main.html';
+        }, 1000);
+      } else {
+        msgCadastro.className = 'msg error';
+        msgCadastro.textContent = 'Falha no login automático. Por favor, faça login manualmente.';
+        msgCadastro.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      msgCadastro.className = 'msg error';
+      msgCadastro.textContent = 'Erro de conexão no login automático.';
+      msgCadastro.style.display = 'block';
+    });
+  }
+</script>
+
+</body>
+</html>
