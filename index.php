@@ -25,7 +25,6 @@
     {
         height: 100px;
     }
-
     .logov2u
     {
         background-color: #FFD000;
@@ -38,7 +37,6 @@
         font-weight: bold;
         font-size: 22px;
     }
-
     .titulo
     {
         font-weight: bold;
@@ -46,9 +44,6 @@
         margin-bottom: 15px;
         color: #FFD000;
     }
-
-
-
     .botaorede
     {
         display: flex;
@@ -63,7 +58,6 @@
         padding: 15px;
         cursor: pointer;
     }
-
     input
     {
     background-color: black;
@@ -75,8 +69,6 @@
     outline: none;
     width: 100%;
     }
-
-
     .botao
     {
         background-color: #32312e;
@@ -88,15 +80,13 @@
         cursor: pointer;
         width: 100%;
     }
-
-    .SIGNUPCOMREDES
+    .signupcomredes
     {
         display: flex;
         flex-direction: column;
         gap: 20px;
         min-width: 400px;
     }
-
     body
     {
         background-color: black;
@@ -127,7 +117,7 @@
         font-size: 18px;
         color: #fecb08;
     }
-    .SIGNUP
+    .signup
     {
         display: flex;
         flex-direction: column;
@@ -139,8 +129,7 @@
 <body>
 <div class="criaconta">CRIAR CONTA</div>
 <div class="conjunto">
-    
-<div class="SIGNUP">
+<div class="signup">
     <div>
         <label for="email">EMAIL</label>
         <input type="email" id="" placeholder="NOME@EXEMPLO.COM">
@@ -151,8 +140,6 @@
     </div>
     <button class="botao">ENTRAR</button>
 </div>
-
-
 <div class="divisor">
     <div class="titulo">VOLT2U LOGIN</div>
     <div class="linhadivisor cima"></div>
@@ -161,7 +148,7 @@
 </div>
     <div class="linhadivisor baixo"></div>
 </div>
-<div class="SIGNUPCOMREDES">
+<div class="signupcomredes">
     <button class="botaorede">CONTINUAR COM GOOGLE</button>
     <button class="botaorede">CONTINUAR COM FACEBOOK</button>
     </div>
