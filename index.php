@@ -4,26 +4,76 @@
 <head>
 <title>VOLT2U</title>
 <style>
+    .divisor
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 0 50px;
+    }
+    .linhadivisor
+    {
+        width: 2px;
+        background-color: gray;
+    }
+    .linhadivisor.baixo
+    {
+        height: 100px;
+    }
+    .linhadivisor.cima
+    {
+        height: 100px;
+    }
+
+    .logov2u
+    {
+        background-color: #FFD000;
+        color: black;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .titulo
+    {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #FFD000;
+    }
+
+
+
     .botaorede
     {
-        cursor: pointer;
-        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        border: 2px solid white;
+        background: transparent;
+        color: #fecb08;
         font-size: 18px;
         font-weight: bold;
-        color: #fecb08;
-        background: transparent;
-        align-items: center;
+        padding: 15px;
+        cursor: pointer;
     }
 
     input
     {
-        background-color: black;
-        border: none;
-        color: #fecb08;
-        font-size: 18px;
-        padding: 8px;
-        outline: none;
-        font-size: 18px;
+    background-color: black;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 16px;
+    padding: 8px 0;
+    outline: none;
+    width: 100%;
     }
 
 
@@ -31,50 +81,65 @@
     {
         background-color: #32312e;
         color: #fecb08;
+        font-weight: bold;
         font-size: 18px;
+        border: none;
         padding: 15px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .SIGNUPCOMREDES
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 400px;
     }
 
     body
     {
-        background-color: gray;
+        background-color: black;
     }
     label
     {
-        font-size: 16px;
-        font-weight: bold;
-        display: block;
-        margin-top: 10px;
-
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFD000;
+    display: block;
+    margin-bottom: 5px;
     }
-    .conjunto
+    .conjunto 
     {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: 100%;
     }
-    .criaconta 
+    .criaconta
     {
         position: absolute;
         top: 20px;
         right: 30px;
+        font-weight: bold;
         cursor: pointer;
-        font-size: 21px;
+        font-size: 18px;
+        color: #fecb08;
     }
     .SIGNUP
     {
         display: flex;
         flex-direction: column;
         gap: 30px;
+        min-width: 400px;
     }
 </style>
 </head>
-
-
-
 <body>
 <div class="criaconta">CRIAR CONTA</div>
 <div class="conjunto">
+    
 <div class="SIGNUP">
     <div>
         <label for="email">EMAIL</label>
@@ -85,17 +150,21 @@
         <input type="password" id="" placeholder="DIGITE SUA SENHA AQUI">
     </div>
     <button class="botao">ENTRAR</button>
-<div>
-
-<div class="divisor">
-    <div class="TITULO">VOLT2U LOGIN</div>
-    <div class="linhadecima"></div>
-    <div class="logov2u">TESTE</div>
-    <div class="linhadebaixo"></div>
 </div>
 
+
+<div class="divisor">
+    <div class="titulo">VOLT2U LOGIN</div>
+    <div class="linhadivisor cima"></div>
+    <div class="logov2u">
+        <img src="logovolt.png">
+</div>
+    <div class="linhadivisor baixo"></div>
+</div>
 <div class="SIGNUPCOMREDES">
     <button class="botaorede">CONTINUAR COM GOOGLE</button>
     <button class="botaorede">CONTINUAR COM FACEBOOK</button>
+    </div>
 </div>
-</div>
+</body>
+</html>
