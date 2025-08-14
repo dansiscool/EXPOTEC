@@ -27,7 +27,7 @@
     }
     .logov2u
     {
-        background-color: #FFD000;
+        background-color: #fecb02;
         color: black;
         width: 60px;
         height: 60px;
@@ -42,7 +42,7 @@
         font-weight: bold;
         font-size: 24px;
         margin-bottom: 15px;
-        color: #FFD000;
+        color: #fecb02;
     }
     .botaorede
     {
@@ -52,7 +52,7 @@
         gap: 15px;
         border: 2px solid white;
         background: transparent;
-        color: #fecb08;
+        color: #fecb02;
         font-size: 18px;
         font-weight: bold;
         padding: 15px;
@@ -64,15 +64,29 @@
     border: none;
     border-bottom: 2px solid white;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px 0;
+    padding-left: 18px;
     outline: none;
     width: 100%;
     }
+
+    h1
+    {
+        color: white;
+        font-size: 16px;
+    }
+
+    input::placeholder
+    {
+        color: white;
+        font-size: 14px;
+    }
+
     .botao
     {
-        background-color: #32312e;
-        color: #fecb08;
+        background-color: #101010;
+        color: white;
         font-weight: bold;
         font-size: 18px;
         border: none;
@@ -95,28 +109,33 @@
     {
     font-size: 14px;
     font-weight: bold;
-    color: #FFD000;
+    color: #fecb02;
     display: block;
     margin-bottom: 5px;
     }
     .conjunto 
     {
+        margin-top: 220px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 100%;
     }
-    .criaconta
+    .criarconta
     {
-        position: absolute;
-        top: 20px;
-        right: 30px;
         font-weight: bold;
         cursor: pointer;
         font-size: 18px;
         color: #fecb08;
+        text-decoration: underline;
     }
+
+    .conjuntocriarconta
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .signup
     {
         display: flex;
@@ -127,7 +146,6 @@
 </style>
 </head>
 <body>
-<div class="criaconta">CRIAR CONTA</div>
 <div class="conjunto">
 <div class="signup">
     <div>
@@ -152,6 +170,10 @@
     <button class="botaorede">CONTINUAR COM GOOGLE</button>
     <button class="botaorede">CONTINUAR COM FACEBOOK</button>
     </div>
+</div>
+    <div class="conjuntocriarconta">
+    <h1>Não tem uma conta ainda?</h1>
+    <div class="criarconta">CRIAR CONTA</div>
 </div>
 </body>
 </html>
