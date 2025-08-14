@@ -25,17 +25,9 @@
     {
         height: 100px;
     }
+
     .logov2u
     {
-        background-color: #fecb02;
-        color: black;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 60px;
-        font-weight: bold;
-        font-size: 22px;
     }
     .titulo
     {
@@ -70,19 +62,23 @@
     outline: none;
     width: 100%;
     }
-
+    h2
+    {
+        color: white;
+        font-size: 16px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
     h1
     {
         color: white;
         font-size: 16px;
     }
-
     input::placeholder
     {
         color: white;
         font-size: 14px;
     }
-
     .botao
     {
         background-color: #101010;
@@ -93,6 +89,7 @@
         padding: 15px;
         cursor: pointer;
         width: 100%;
+        margin-top: -20px;
     }
     .signupcomredes
     {
@@ -128,19 +125,17 @@
         color: #fecb08;
         text-decoration: underline;
     }
-
     .conjuntocriarconta
     {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     .signup
     {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
         min-width: 400px;
     }
 </style>
@@ -155,6 +150,7 @@
     <div>
         <label for="senha">SENHA</label>
         <input type="password" id="" placeholder="DIGITE SUA SENHA AQUI">
+        <h2>Redefinir a senha</h2>
     </div>
     <button class="botao">ENTRAR</button>
 </div>
